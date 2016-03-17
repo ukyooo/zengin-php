@@ -2,7 +2,7 @@
   "name": "zengin-code/zengin-php",
   "require": {
     "phpunit/phpunit": "4.5.*"
-  }
+  },
   "scripts": {
     "post-install-cmd": [
       "git submodule update --init"
