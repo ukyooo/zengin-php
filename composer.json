@@ -5,7 +5,8 @@
     { "name": "ukyooo", "email": "ukyooo@gmail.com" }
   ],
   "scripts": {
-    "post-install-cmd": [ "ZenginCode\\Data::setUp", "git submodule update --init", "git submodule update" ],
+    "pre-install-cmd": [ "ZenginCode\\Data::setUp", "echo pre-install-cmd", "git submodule update --init", "git submodule update" ],
+    "post-install-cmd": [ "ZenginCode\\Data::setUp", "echo post-install-cmd", "git submodule update --init", "git submodule update" ],
     "post-update-cmd": [ "ZenginCode\\Data::setUp", "git submodule update --init", "git submodule update" ],
     "post-status-cmd": [ "ZenginCode\\Data::setUp", "git submodule update --init", "git submodule update" ],
     "post-archive-cmd": [ "ZenginCode\\Data::setUp", "git submodule update --init", "git submodule update" ],
