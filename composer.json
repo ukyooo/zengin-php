@@ -1,14 +1,26 @@
 {
   "name": "zengin-code/zengin-php",
+  "authors": [
+    { "name": "ukyooo", "email": "ukyooo@gmail.com" }
+  ],
   "require": {
-    "phpunit/phpunit": "4.5.*"
+    "scripts": {
+      "post-install-cmd": [
+        "git submodule update --init",
+        "git submodule update"
+      ],
+      "post-update-cmd": [
+        "git submodule update --init",
+        "git submodule update"
+      ],
+      "post-package-install": [
+        "git submodule update --init",
+        "git submodule update"
+      ],
+      "post-package-update": [
+        "git submodule update --init",
+        "git submodule update"
+      ]
+    }
   },
-  "scripts": {
-    "post-package-install": [
-      "git submodule update --init"
-    ],
-    "post-package-update": [
-      "git submodule update"
-    ]
-  }
 }
