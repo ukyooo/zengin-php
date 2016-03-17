@@ -10,6 +10,13 @@ class Data {
     private static $_data_bank      = array();
     private static $_data_branch    = array();
 
+    public static function setUp(\Composer\Script\Event $event)
+    {
+        $composer = $event->getComposer();
+        echo sprintf("%s : %s : %s : Ws\n", __FILE__, __LINE__, __DIR__, getcwd());
+    }
+
+
     public function __construct() {
         // load bank data
         if (!count(self::$_data_bank)) {

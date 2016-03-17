@@ -5,21 +5,19 @@
     { "name": "ukyooo", "email": "ukyooo@gmail.com" }
   ],
   "scripts": {
-    "post-install-cmd": [ "git submodule update --init", "git submodule update" ],
-    "post-update-cmd": [ "git submodule update --init", "git submodule update" ],
-    "post-status-cmd": [ "git submodule update --init", "git submodule update" ],
-    "post-archive-cmd": [ "git submodule update --init", "git submodule update" ],
-    "post-autoload-dump": [ "git submodule update --init", "git submodule update" ],
-    "post-root-package-install": [ "git submodule update --init", "git submodule update" ],
-    "post-create-project-cmd": [ "git submodule update --init", "git submodule update" ],
+    "post-install-cmd": [ "ZenginCode\\Data::setUp", "git submodule update --init", "git submodule update" ],
+    "post-update-cmd": [ "ZenginCode\\Data::setUp", "git submodule update --init", "git submodule update" ],
+    "post-status-cmd": [ "ZenginCode\\Data::setUp", "git submodule update --init", "git submodule update" ],
+    "post-archive-cmd": [ "ZenginCode\\Data::setUp", "git submodule update --init", "git submodule update" ],
+    "post-autoload-dump": [ "ZenginCode\\Data::setUp", "git submodule update --init", "git submodule update" ],
+    "post-root-package-install": [ "ZenginCode\\Data::setUp", "git submodule update --init", "git submodule update" ],
+    "post-create-project-cmd": [ "ZenginCode\\Data::setUp", "git submodule update --init", "git submodule update" ],
 
-    "post-dependencies-solving": [ "git submodule update --init", "git submodule update" ],
+    "post-dependencies-solving": [ "ZenginCode\\Data::setUp", "git submodule update --init", "git submodule update" ],
 
-    "post-package-install": [ "git submodule update --init", "git submodule update" ],
-    "post-package-update": [ "git submodule update --init", "git submodule update" ],
+    "post-package-install": [ "ZenginCode\\Data::setUp", "git submodule update --init", "git submodule update" ],
+    "post-package-update": [ "ZenginCode\\Data::setUp", "git submodule update --init", "git submodule update" ],
 
-    "test": [ "git submodule update --init", "git submodule update" ]
-
-
+    "test": [ "ZenginCode\\Data::setUp", "git submodule update --init", "git submodule update" ]
   }
 }
