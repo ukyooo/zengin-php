@@ -4,21 +4,10 @@
     { "name": "ukyooo", "email": "ukyooo@gmail.com" }
   ],
   "scripts": {
-    "post-install-cmd": [
-      "git submodule update --init",
-      "git submodule update"
-    ],
-    "post-update-cmd": [
-      "git submodule update --init",
-      "git submodule update"
-    ],
-    "post-package-install": [
-      "git submodule update --init",
-      "git submodule update"
-    ],
-    "post-package-update": [
-      "git submodule update --init",
-      "git submodule update"
-    ]
+    "post-install-cmd": [ "git submodule update --init", "git submodule update" ],
+    "post-update-cmd": [ "git submodule update --init", "git submodule update" ],
+    "post-dependencies-solving": [ "git submodule update --init", "git submodule update" ],
+    "post-package-install": [ "git submodule update --init", "git submodule update" ],
+    "post-package-update": [ "git submodule update --init", "git submodule update" ]
   }
 }
