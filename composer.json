@@ -4,10 +4,10 @@
     "phpunit/phpunit": "4.5.*"
   },
   "scripts": {
-    "post-install-cmd": [
+    "post-package-install": [
       "git submodule update --init"
     ],
-    "post-update-cmd": [
+    "post-package-update": [
       "git submodule update"
     ]
   }
