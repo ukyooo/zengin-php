@@ -3,4 +3,14 @@
   "require": {
     "phpunit/phpunit": "4.5.*"
   }
+  "scripts": {
+    "pre-install-cmd": [ ],
+    "post-install-cmd": [
+      "git submodule update --init"
+    ],
+    "pre-update-cmd": [ ],
+    "post-update-cmd": [
+      "git submodule update"
+    ]
+  }
 }
