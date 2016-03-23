@@ -1,24 +1,15 @@
 {
   "name": "zengin-code/zengin-php",
-  "license": "",
+  "description": "",
+  "license": "MIT",
   "authors": [
     { "name": "ukyooo", "email": "ukyooo@gmail.com" }
   ],
-  "scripts": {
-    "pre-install-cmd": [ "ZenginCode\\Data::setUp", "echo pre-install-cmd >> /tmp/tmp.txt", "git submodule update --init", "git submodule update" ],
-    "post-install-cmd": [ "ZenginCode\\Data::setUp", "echo post-install-cmd >> /tmp/tmp.txt", "git submodule update --init", "git submodule update" ],
-    "post-update-cmd": [ "ZenginCode\\Data::setUp", "git submodule update --init", "git submodule update" ],
-    "post-status-cmd": [ "ZenginCode\\Data::setUp", "git submodule update --init", "git submodule update" ],
-    "post-archive-cmd": [ "ZenginCode\\Data::setUp", "git submodule update --init", "git submodule update" ],
-    "post-autoload-dump": [ "ZenginCode\\Data::setUp", "git submodule update --init", "git submodule update" ],
-    "post-root-package-install": [ "ZenginCode\\Data::setUp", "git submodule update --init", "git submodule update" ],
-    "post-create-project-cmd": [ "ZenginCode\\Data::setUp", "git submodule update --init", "git submodule update" ],
-
-    "post-dependencies-solving": [ "ZenginCode\\Data::setUp", "git submodule update --init", "git submodule update" ],
-
-    "post-package-install": [ "ZenginCode\\Data::setUp", "git submodule update --init", "git submodule update" ],
-    "post-package-update": [ "ZenginCode\\Data::setUp", "git submodule update --init", "git submodule update" ],
-
-    "test": [ "ZenginCode\\Data::setUp", "git submodule update --init", "git submodule update" ]
+  "repositories": [
+    { "type": "git", "url": "git@github.com:showcase-gig/gig-standard.git" },
+    { "type": "git", "url": "git@github.com:ukyooo/source-data.git" }
+  ],
+  "require": {
+    "zengin-code/source-data": "*"
   }
 }

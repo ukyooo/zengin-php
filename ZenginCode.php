@@ -1,91 +1,118 @@
 <?php
 
+/**
+ * Class ZenginCode\Data
+ *
+ * @package ZenginCode
+ */
+
 namespace ZenginCode;
 
-class Data {
-    const BANK_DATA_FILE_PATH = 'source-data/data/banks.json';
-    const BRANCH_DATA_DIR = 'source-data/data/branches';
+class Data
+{
+    const BANK_DATA_FILE_PATH   = 'source-data/data/banks.json';
+    const BRANCH_DATA_DIR       = 'source-data/data/branches';
 
-    private static $_base_path      = __DIR__;
-    private static $_data_bank      = array();
-    private static $_data_branch    = array();
+    private static $data_path_list  = array(
+        './',
+        './vendor/zengin-code',
+        './../vendor/zengin-code',
+        './../../vendor/zengin-code',
+        './../../../vendor/zengin-code',
+    );
+    private static $data_path       = null;
+    private static $data_bank       = array();
+    private static $data_branch     = array();
 
-    public static function setUp(\Composer\Script\Event $event)
+    public function __construct()
     {
-        $composer = $event->getComposer();
-        echo sprintf("%s : %s : %s : Ws\n", __FILE__, __LINE__, __DIR__, getcwd());
-    }
+        // init
 
+        // find data path
+        foreach (self::$data_path_list as $path) {
+            $path = sprintf('%s/%s', __DIR__, $path);
+            $file = sprintf('%s/%s', $path, self::BANK_DATA_FILE_PATH);
+            if (file_exists($file)) {
+                self::$data_path = $path;
+                break;
+            }
+        }
+        if (is_null(self::$data_path)) throw new \Exception('data does not exists.');
 
-    public function __construct() {
         // load bank data
-        if (!count(self::$_data_bank)) {
-            self::$_data_bank = self::loadBankData();
+        if (!count(self::$data_bank)) {
+            self::$data_bank = self::loadBankData();
         }
 
         // load bank branch data
-        foreach (array_keys(self::$_data_bank) as $bank_code) {
-            self::$_data_branch[$bank_code] = self::loadBranchData($bank_code);
+        foreach (array_keys(self::$data_bank) as $bank_code) {
+            self::$data_branch[$bank_code] = self::loadBranchData($bank_code);
         }
     }
-    private static function loadBankData() {
-        $file_path = sprintf('%s/%s', self::$_base_path, self::BANK_DATA_FILE_PATH);
+    private static function loadBankData()
+    {
+        $file_path = sprintf('%s/%s', self::$data_path, self::BANK_DATA_FILE_PATH);
         return json_decode(file_get_contents($file_path), true);
     }
-    private static function loadBranchData($bank_code) {
-        $file_path = sprintf('%s/%s/%s.json', self::$_base_path, self::BRANCH_DATA_DIR, $bank_code);
+    private static function loadBranchData($bank_code)
+    {
+        $file_path = sprintf('%s/%s/%s.json', self::$data_path, self::BRANCH_DATA_DIR, $bank_code);
         return json_decode(file_get_contents($file_path), true);
     }
 
-    /**
+    /** bankData()
      *
      */
-    public function bankData() {
-        return self::$_data_bank;
+    public function bankData()
+    {
+        return self::$data_bank;
     }
 
-    /**
+    /** branchData()
      *
      */
-    public function branchData() {
-        return self::$_data_branch;
+    public function branchData()
+    {
+        return self::$data_branch;
     }
 
-    /**
+    /** all()
      *
      */
-    public function all() {
-        $data = self::$_data_bank;
+    public function all()
+    {
+        $data = self::$data_bank;
         foreach (array_keys($data) as $bank_code) {
-            $data[$bank_code]['branches'] = self::$_data_branch[$bank_code];
+            $data[$bank_code]['branches'] = self::$data_branch[$bank_code];
         }
         return $data;
     }
 
-    /**
+    /** lookupBank()
      *
      */
-    public function lookupBank($bank_code, $with_branches=false) {
-        $row = self::$_data_bank[$bank_code];
+    public function lookupBank($bank_code, $with_branches = false)
+    {
+        $row = self::$data_bank[$bank_code];
         if ($with_branches === true) {
-            $row['branches'] = self::$_data_branch[$bank_code];
+            $row['branches'] = self::$data_branch[$bank_code];
         }
         return $row;
     }
 
-    /**
+    /** lookupBranch()
      *
      */
-    public function lookupBranch($bank_code, $branch_code) {
-        return self::$_data_branch[$bank_code][$branch_code];
+    public function lookupBranch($bank_code, $branch_code)
+    {
+        return self::$data_branch[$bank_code][$branch_code];
     }
 
-    /**
+    /** findBranch()
      *
      */
-    public function findBranch($bank_code) {
-        return self::$_data_branch[$bank_code][$branch_code];
+    public function findBranch($bank_code)
+    {
+        return self::$data_branch[$bank_code][$branch_code];
     }
 }
-
-?>
